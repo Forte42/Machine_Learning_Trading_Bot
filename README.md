@@ -28,7 +28,39 @@ Originally, the notebook was set with the same moving average windows but had a 
 ![trading returns](Resources/all_3_month.png)
 
 
-'Actual Returns' represents what the market did on its own. 'Strategy Returns' represents the hard-coded SMA strategy, 'Model Returns' represents the C-Support Vector Classification model (SVC), and 'LR Model Returns' represents the Logistic Regression (LR) model.
+'Actual Returns' represents what the market did on its own. 'Strategy Returns' represents the hard-coded SMA strategy, 'Model Returns' represents the C-Support Vector Classification model (SVC), and 'LR Model Returns' represents the Logistic Regression (LR) model. This is the baseline performance.
+
+
+After that I experimented with the training period to try and improve the models' returns. I tried 6 month, 12 month, 24 month, 36 month, and 48 month training windows. The rest of the data went to testing. Here are some results:
+
+![trading returns](Resources/all_6_month.png)
+![trading returns](Resources/all_48_month.png)
+
+As demonstrated in the graphs, once the training time started getting too high returns suffered. The 48 month chart also demonstrates an issue that happened with higher training times: The model recommended holding almost all the time and mimic'd the actual returns. The sweet spot in the data set seemed to be about 12-24 months.
+
+Finally, I experimented with different moving average windows. I changed the windows to 50 and 100 or 50 and 200 to mimic a classical 'golden cross' trading strategy. This actually proved hurtful for the base case model, but when I changed the training window I got interesting results, including one of the best runs.
+
+![trading returns](Resources/3_200.png)
+![trading returns](Resources/12_200.png)
+
+I suspect the reason this hurts the models is because the models are actually trading on a short time window (the very next stock price). If I tried moving averages measured in hours or tried to get the models predicting over a longer time period this may have worked better.
+
+---
+
+## Conclusion
+
+These were my 2 best runs. One was with a 12 month training and 4/100 (original) moving averages. The second was a 24 month training period with 50/200 moving averages.
+
+![trading returns](Resources\all_12_month.png)
+![trading returns](Resources\24_200.png)
+
+
+Here are the classification reports:
+
+![trading returns](Resources\best_lr_model_12_normal.png)
+![trading returns](Resources\best_svc_model_24_200.png)
+
+Interestingly the 24 month training period was an outlier with my SMA experimentation. Usually the longer windows worsened the model. That model is also different because the recall was close to 50/50, as opposed to almost 0% for the negative recall scenario and 90+% for the positive. While both these models produced similar returns, one is SVC and has an accuracy of .52, while the other is LogisticRegression and had an accuracy of .57.
 
 ---
 
