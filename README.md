@@ -51,14 +51,14 @@ I suspect the reason this hurts the models is because the models are actually tr
 
 These were my 2 best runs. One was with a 12 month training and 4/100 (original) moving averages. The second was a 24 month training period with 50/200 moving averages.
 
-![trading returns](Resources\all_12_month.png)
-![trading returns](Resources\24_200.png)
+![trading returns](Resources/all_12_month.png)
+![trading returns](Resources/24_200.png)
 
 
 Here are the classification reports:
 
-![trading returns](Resources\best_lr_model_12_normal.png)
-![trading returns](Resources\best_svc_model_24_200.png)
+![trading returns](Resources/best_lr_model_12_normal.png)
+![trading returns](Resources/best_svc_model_24_200.png)
 
 Interestingly the 24 month training period was an outlier with my SMA experimentation. Usually the longer windows worsened the model. That model is also different because the recall was close to 50/50, as opposed to almost 0% for the negative recall scenario and 90+% for the positive. While both these models produced similar returns, one is SVC and has an accuracy of .52, while the other is LogisticRegression and had an accuracy of .57.
 
