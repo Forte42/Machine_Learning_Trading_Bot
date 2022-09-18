@@ -1,6 +1,6 @@
 # Machine_Learning_Trading_Bot
 
-In this notebook I test two machine learning models (SVC and LogisticRegression) against a hardcoded moving average trading algorithm. I then experiment with the models to increase their returns.
+In this notebook I test two machine learning models (SVC and LogisticRegression) against a hardcoded Simple Moving Average (SMA) trading algorithm. I then experiment with the models to increase their returns.
 
 ---
 
@@ -18,9 +18,17 @@ All required packages can be installed with pip install.
 
 ## Experiment
 
-This notebook was made 
+This notebook was made to practice developing and improving trading algorithms. Currently, the notebook is set to run a moving average trading strategy. The short moving average is set to 4 and the long moving average is set to 100. The notebook also has a machine learning training dataset comprising 12 months of stock data.
 
-![chart_screenshot.](Resources/loss_screenshot.png)
+These parameters can be adjusted by altering the variables 'short_window', 'long_window', and the DateOffset in variable 'training_end'.
+
+Originally, the notebook was set with the same moving average but had a shorter 3 month training period. Here are the results.
+
+
+![trading returns](Resources/all_3_month.png)
+
+
+'Actual Returns' represents what the market did on its own. 'Strategy Returns' represents the hard-coded SMA 
 
 ---
 
